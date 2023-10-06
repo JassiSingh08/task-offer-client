@@ -3,10 +3,10 @@ import React from "react";
 export const ToggleBtn = ({ checked, onChange }) => {
   return (
     <div>
-      <label class="toggle-switch">
+      <label className="toggle-switch">
         <input type="checkbox" checked={checked} onChange={onChange} />
-        <div class="toggle-switch-background">
-          <div class="toggle-switch-handle"></div>
+        <div className="toggle-switch-background">
+          <div className="toggle-switch-handle"></div>
         </div>
       </label>
     </div>

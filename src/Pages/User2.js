@@ -2,7 +2,7 @@ import React from "react";
 import Bedroom from "../components/Bedroom";
 import Kitchen from "../components/Kitchen";
 import { CommonBtn } from "../components/MyButton";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { GlobalAllOn, GlobalAllOff } from "../redux/actions";
 
 const User2 = () => {
