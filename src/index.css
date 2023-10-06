@@ -35,10 +35,8 @@ body {
 }
 
 /* LIGHTS */
-.L1,
-.L2,
-.K1,
-.K2 {
+.bedroom,.kitchen
+{
   display: flex;
   align-items: center;
   justify-content: center;
@@ -65,7 +63,6 @@ body {
 }
 
 /* TOGGLE SWITCH STYLE */
-
 .toggle-switch {
   position: relative;
   display: inline-block;
@@ -179,4 +176,25 @@ body {
 .Common-button:active {
   box-shadow: #D6D6E7 0 3px 7px inset;
   transform: translateY(2px);
+}
+
+/*for small devices (768px and smaller) */
+@media (max-width: 768px) {
+
+  body{
+    padding-bottom: 50px;
+  }
+  .users {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+}
+
+/* for screens between 769px and 990px */
+@media (min-width: 769px) and (max-width: 990px) {
+  .users {
+    gap: 80px;
+  }
 }

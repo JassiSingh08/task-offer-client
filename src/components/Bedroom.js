@@ -6,46 +6,36 @@ import {
   BedAllOff,
   BedAllOn,
 } from "../redux/actions";
-import { CommonBtn, ToggleBtn } from "./MyButton";
+import { CommonBtn } from "./MyButton";
+import Light1 from "./Light1";
+import Light2 from "./Light2";
 
 const Bedroom = ({ toggleSwitch }) => {
   const { isBedChecked1, isBedChecked2 } = useSelector(
     (state) => state.counter
   );
   const dispatch = useDispatch();
-  // console.log(isBedChecked1, isBedChecked2)
+
+    // isBedChecked1 : Bedroom Light 1
+    // isBedChecked2 : Bedroom Light 2
+    // BedAllOn      : Bedroom Both ON
+    // BedAllOff     : Bedroom Both OFF
 
   return (
     <div className="bedroom-container">
       <h1>Bedroom</h1>
-      <div className="L1">
-        <span>Light 1</span>
-        <ToggleBtn
-          checked={isBedChecked1}
-          onChange={(e) => {
-            dispatch(toggleBedLight1(e.target.checked));
-            toggleSwitch({
-              room: "bedroom",
-              value: e.target.checked,
-              light: "one",
-            });
-          }}
-        />
-      </div>
-      <div className="L2">
-        <span>Light 2</span>
-        <ToggleBtn
-          checked={isBedChecked2}
-          onChange={(e) => {
-            dispatch(toggleBedLight2(e.target.checked));
-            toggleSwitch({
-              room: "bedroom",
-              value: e.target.checked,
-              light: "two",
-            });
-          }}
-        />
-      </div>
+      <Light1
+        room="bedroom"
+        checked={isBedChecked1}
+        toggleLight={toggleBedLight1}
+        toggleSwitch={toggleSwitch}
+      />
+      <Light2
+        room="bedroom"
+        checked={isBedChecked2}
+        toggleLight={toggleBedLight2}
+        toggleSwitch={toggleSwitch}
+      />
       <div className="Both-btns">
         <CommonBtn
           text={"Both ON"}

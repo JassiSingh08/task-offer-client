@@ -1,5 +1,5 @@
 import React from "react";
-import { CommonBtn, ToggleBtn } from "./MyButton";
+import { CommonBtn } from "./MyButton";
 import { useDispatch, useSelector } from "react-redux";
 import {
   KitAllOff,
@@ -7,45 +7,35 @@ import {
   toggleKitLight1,
   toggleKitLight2,
 } from "../redux/actions";
+import Light1 from "./Light1";
+import Light2 from "./Light2";
 
-const Kitchen = ({toggleSwitch}) => {
+const Kitchen = ({ toggleSwitch }) => {
   const { isKitChecked1, isKitChecked2 } = useSelector(
     (state) => state.counter
   );
   const dispatch = useDispatch();
-  // console.log(isKitChecked1, isKitChecked2)
+
+    // isKitChecked1 : Kitchen Light 1
+    // isKitChecked2 : Kitchen Light 2
+    // KitAllOn      : Kitchen Both ON
+    // KitAllOff     : Kitchen Both OFF
 
   return (
     <div className="Kitchen-container">
       <h1>Kitchen</h1>
-      <div className="K1">
-        <span>Light 1</span>
-        <ToggleBtn
-          checked={isKitChecked1}
-          onChange={(e) => {
-            dispatch(toggleKitLight1(e.target.checked));
-            toggleSwitch({
-              room: "kitchen",
-              value: e.target.checked,
-              light: "one",
-            });
-          }}
-        />
-      </div>
-      <div className="K2">
-        <span>Light 2</span>
-        <ToggleBtn
-          checked={isKitChecked2}
-          onChange={(e) => {
-            dispatch(toggleKitLight2(e.target.checked));
-            toggleSwitch({
-              room: "kitchen",
-              value: e.target.checked,
-              light: "two",
-            });
-          }}
-        />
-      </div>
+      <Light1
+        room="kitchen"
+        checked={isKitChecked1}
+        toggleLight={toggleKitLight1}
+        toggleSwitch={toggleSwitch}
+      />
+      <Light2
+        room="kitchen"
+        checked={isKitChecked2}
+        toggleLight={toggleKitLight2}
+        toggleSwitch={toggleSwitch}
+      />
       <div className="Both-btns">
         <CommonBtn
           text={"Both ON"}
