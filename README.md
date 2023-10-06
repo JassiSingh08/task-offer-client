@@ -1,4 +1,4 @@
-# Redux WebSocket Toggle Project : ROOMS
+# Redux WebSocket Toggle Project: ROOMS
 
 ## Table of Contents
 
@@ -15,7 +15,6 @@
 - [Redux Store](#redux-store)
 - [WebSocket Integration](#websocket-integration)
 - [Contributing](#contributing)
-- [License](#license)
 
 ---
 
@@ -43,13 +42,13 @@ Before you get started, ensure you have the following dependencies installed:
 1. Clone this repository to your local machine:
 
    ```bash
-   git clone https://github.com/your-username/redux-websocket-toggle-project.git
+   git clone https://github.com/JassiSingh08/task-offer-client
    ```
 
 2. Navigate to the project directory:
 
    ```bash
-   cd redux-websocket-toggle-project
+   cd task-offer-client
    ```
 
 3. Install the project dependencies:
@@ -104,7 +103,3 @@ WebSocket integration is used to enable real-time communication between differen
 ## Contributing
 
 Contributions to this project are welcome! If you have any ideas, bug fixes, or improvements, please open an issue or submit a pull request.
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
