@@ -8,7 +8,7 @@ import {
   toggleKitLight2,
 } from "../redux/actions";
 
-const Kitchen = () => {
+const Kitchen = ({toggleSwitch}) => {
   const { isKitChecked1, isKitChecked2 } = useSelector(
     (state) => state.counter
   );
@@ -22,21 +22,52 @@ const Kitchen = () => {
         <span>Light 1</span>
         <ToggleBtn
           checked={isKitChecked1}
-          onChange={(e) => dispatch(toggleKitLight1(e.target.checked))}
+          onChange={(e) => {
+            dispatch(toggleKitLight1(e.target.checked));
+            toggleSwitch({
+              room: "kitchen",
+              value: e.target.checked,
+              light: "one",
+            });
+          }}
         />
       </div>
       <div className="K2">
         <span>Light 2</span>
         <ToggleBtn
           checked={isKitChecked2}
-          onChange={(e) => dispatch(toggleKitLight2(e.target.checked))}
+          onChange={(e) => {
+            dispatch(toggleKitLight2(e.target.checked));
+            toggleSwitch({
+              room: "kitchen",
+              value: e.target.checked,
+              light: "two",
+            });
+          }}
         />
       </div>
       <div className="Both-btns">
-        <CommonBtn text={"Both ON"} clickFuntion={() => dispatch(KitAllOn())} />
+        <CommonBtn
+          text={"Both ON"}
+          clickFuntion={() => {
+            dispatch(KitAllOn());
+            toggleSwitch({
+              room: "kitchen",
+              value: true,
+              light: "all",
+            });
+          }}
+        />
         <CommonBtn
           text={"Both OFF"}
-          clickFuntion={() => dispatch(KitAllOff())}
+          clickFuntion={() => {
+            dispatch(KitAllOff());
+            toggleSwitch({
+              room: "kitchen",
+              value: false,
+              light: "all",
+            });
+          }}
         />
       </div>
     </div>
