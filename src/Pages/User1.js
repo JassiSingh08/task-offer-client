@@ -1,7 +1,4 @@
 import React, { useEffect } from "react";
-import Bedroom from "../components/Bedroom";
-import Kitchen from "../components/Kitchen";
-import { CommonBtn } from "../components/MyButton";
 import { useDispatch } from "react-redux";
 import {
   GlobalAllOn,
@@ -17,11 +14,13 @@ import {
 } from "../redux/actions";
 
 import socket from "../websocket";
+import Users from "../components/Users";
 
 const User1 = () => {
   const dispatch = useDispatch();
+  //   {room: 'bedroom', value: true, light: 'one'}
 
-  useEffect(() => {
+  const SocketConnection = () => {
     socket.on("force_toggle_switch", (data) => {
       console.log("Received message:", data);
       if (data.room === "bedroom") {
@@ -48,9 +47,11 @@ const User1 = () => {
     return () => {
       socket.off("message");
     };
-  }, []);
+  };
 
-  //   {room: 'bedroom', value: true, light: 'one'}
+  useEffect(() => {
+    SocketConnection();
+  }, []);
 
   const toggleSwitch = (data) => {
     socket.emit("toggle_switch", data);
@@ -59,32 +60,8 @@ const User1 = () => {
   return (
     <div>
       <h1 className="text-center">User 1</h1>
-      <div className="users">
-        <Bedroom toggleSwitch={toggleSwitch} />
-        <Kitchen toggleSwitch={toggleSwitch} />
-      </div>
-      <div className="global-btns">
-        <CommonBtn
-          text={"All ON"}
-          clickFuntion={() => {
-            dispatch(GlobalAllOn());
-            toggleSwitch({
-              room: "all",
-              value: true,
-            });
-          }}
-        />
-        <CommonBtn
-          text={"All OFF"}
-          clickFuntion={() => {
-            dispatch(GlobalAllOff());
-            toggleSwitch({
-              room: "all",
-              value: false,
-            });
-          }}
-        />
-      </div>
+      <Users toggleSwitch={toggleSwitch} />
+
     </div>
   );
 };

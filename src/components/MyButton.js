@@ -14,5 +14,6 @@ export const ToggleBtn = ({ checked, onChange }) => {
 };
 
 export const CommonBtn = ({ text, clickFuntion }) => {
-  return <button onClick={clickFuntion}>{text}</button>;
+  return <button onClick={clickFuntion} className="Common-button">{text}</button>;
 };
+
